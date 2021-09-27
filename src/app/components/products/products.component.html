@@ -1,7 +1,15 @@
 <div class="visible-comp">
-  <div class="d-flex flex-wrap justify-content-center ">
-    <div class="p-3" *ngFor="let item of items">
-      <app-product [product]="item"></app-product>
+  <div class="search-results"
+  infinite-scroll
+  [infiniteScrollDistance]="scrollDistance"
+  [infiniteScrollUpDistance]="scrollUpDistance"
+  [infiniteScrollThrottle]="throttle"
+  (scrolled)="onScrollDown()">
+    <p style="text-align: center;">Market Place</p>
+    <div class="d-flex flex-wrap justify-content-center ">
+      <div class="p-3" *ngFor="let item of items">
+        <app-product [product]="item"></app-product>
+      </div>
     </div>
   </div>
 </div>

@@ -5,6 +5,8 @@
   background-color: lightblue;
   position: fixed;
   top: 0;
+  display: flex;
+  z-index: 2;
 }
 .button-list{
   display: inline-flex;

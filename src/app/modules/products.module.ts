@@ -4,6 +4,7 @@ import { ProductsComponent } from '../components/products/products.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 
 
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     SharedModule,
-    FormsModule
+    FormsModule,
+    InfiniteScrollModule
   ]
 })
 export class ProductsModule { }

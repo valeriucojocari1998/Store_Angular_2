@@ -11,16 +11,23 @@ import { Product } from 'src/assets/products';
 export class ProductsComponent implements OnInit {
 
   items: Product[] = [];
+  scrollDistance = 1;
+  scrollUpDistance = 2;
+  throttle = 150;
+
   constructor(
     private productsService: ProductsService,
-    private cartService: CartService
   ) { }
 
+  initialItems = this.productsService.getItems();
   ngOnInit(): void {
-    this.items = this.productsService.getItems();
-    console.log(this.items)
+    this.initialItems.push.apply(this.initialItems, this.initialItems);
+    this.initialItems.push.apply(this.initialItems, this.initialItems);
+    this.items = this.initialItems
   }
-  addToCart(val: Product){
-    this.cartService.addItem(val);
+  onScrollDown(){
+    this.initialItems.forEach(element => {
+      this.items.push(element);
+    });
   }
 }
