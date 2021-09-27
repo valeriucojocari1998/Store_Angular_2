@@ -1,5 +1,17 @@
 .welcome{
   text-align: center;
-  margin-top: 20%;
-  font-size: 50px;
+  margin-top: 15%;
+  font-size: 100px;
+  font-weight: bold;
+  color: linear-gradient(to bottom left, darkviolet, lightblue);
+  cursor: pointer;
 }
+p{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+}
+
