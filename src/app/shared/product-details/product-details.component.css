@@ -1,0 +1,20 @@
+.title{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+  text-align: center;
+  font-weight: bold;
+  font-size: 30px;
+}
+p{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+  font-size: 20px;
+}

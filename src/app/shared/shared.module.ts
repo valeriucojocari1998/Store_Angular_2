@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { ProductComponent } from './product/product.component';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
-
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({

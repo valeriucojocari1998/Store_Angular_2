@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/cart-service.service';
 import { ProductsService } from 'src/app/products.service';
 import { Product } from 'src/assets/products';
 
@@ -14,13 +13,14 @@ export class ProductsComponent implements OnInit {
   scrollDistance = 1;
   scrollUpDistance = 2;
   throttle = 150;
+  initialItems: Product[] = []
 
   constructor(
     private productsService: ProductsService,
   ) { }
 
-  initialItems = this.productsService.getItems();
   ngOnInit(): void {
+    this.initialItems = this.productsService.getItems();
     this.initialItems.push.apply(this.initialItems, this.initialItems);
     this.initialItems.push.apply(this.initialItems, this.initialItems);
     this.items = this.initialItems

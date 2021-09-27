@@ -1,48 +1,22 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Product } from 'src/assets/products';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService implements OnInit {
+export class CartService {
 
-  static key="CART-LIST";
-  localStorage!: Storage;
+
 
   items: Product[] = [];
 
-  constructor() {
-    this.localStorage = window.localStorage;
-  }
-  ngOnInit(): void {
-    if (this.isLocalStorageSupported){
-      this.setItems(this.get(CartService.key));
-    }
-  }
-  get(key: string):any{
-    if (this.isLocalStorageSupported){
-      return JSON.parse(<string>this.localStorage.getItem(key));
-    }
-    return {};
-  }
-  set(key: string, value: any):boolean {
-    if (this.isLocalStorageSupported) {
-      this.localStorage.setItem(key, JSON.stringify(value));
-      return true;
-    }
-    return false;
-  }
-  remove(key: string): boolean{
-    if (this.isLocalStorageSupported) {
-      this.localStorage.removeItem(key);
-      return true;
-    }
-    return false;
-  }
-  get isLocalStorageSupported(): boolean {
-    return !!this.localStorage;
-  }
+  constructor(
+    private localStorageService: LocalStorageService
+  ) { }
+
   getItems(){
+    this.items = this.localStorageService.get(LocalStorageService.key)
     return this.items;
   }
   setItems(val: Product[]){
@@ -59,7 +33,8 @@ export class CartService implements OnInit {
     if (state){
         this.items.push(val);
     }
-    this.localStorage.set(CartService.key, this.items);
+    this.localStorageService.set(LocalStorageService.key, this.items);
+   // console.log(this.localStorageService.get(LocalStorageService.key));
   }
   removeItem(val: Product){
     this.items.forEach((element, index) => {
@@ -72,6 +47,6 @@ export class CartService implements OnInit {
         }
       }
     });
-    this.localStorage.set(CartService.key, this.items);
+    this.localStorageService.set(LocalStorageService.key, this.items);
   }
 }

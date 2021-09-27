@@ -19,6 +19,5 @@ export class ProductComponent implements OnInit {
   }
   addToCart(val: Product){
     this.cartService.addItem(val);
-    console.log(this.product.amount)
   }
 }

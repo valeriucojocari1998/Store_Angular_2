@@ -4,7 +4,7 @@ import { AboutComponent } from './components/about/about.component';
 import { CartComponent } from './components/cart/cart.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProductsComponent } from './components/products/products.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProductDetailsComponent } from './shared/product-details/product-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo:'home', pathMatch:'full' },
