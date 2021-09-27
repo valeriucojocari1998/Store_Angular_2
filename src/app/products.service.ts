@@ -7,5 +7,10 @@ import { products, Product } from 'src/assets/products';
 
 export class ProductsService {
 
+  items = products;
   constructor() { }
+
+  getItems(){
+    return this.items;
+  }
 }

@@ -16,7 +16,7 @@ export const products: Product[] = [
     description: 'Very Very Good Phone',
     image: 'assets/images/iphone13promax.png',
     total: 10,
-    amount: 0
+    amount: 1
   },
   {
     id: 2,
@@ -25,7 +25,7 @@ export const products: Product[] = [
     description: 'Very Good Phone',
     image: 'assets/images/iphone13pro.png',
     total: 100,
-    amount: 0
+    amount: 1
   },
   {
     id: 3,
@@ -34,7 +34,7 @@ export const products: Product[] = [
     description: 'Good Phone',
     image: 'assets/images/iphone13.png',
     total: 100,
-    amount: 0
+    amount: 1
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ export const products: Product[] = [
     description: 'Good flipping phone',
     image: 'assets/images/galaxyzflip3.png',
     total: 50,
-    amount: 0
+    amount: 1
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export const products: Product[] = [
     description: 'Posh flipping phone',
     image: 'assets/images/galaxyzfold3.png',
     total: 50,
-    amount: 0
+    amount: 1
   },
   {
     id: 6,
@@ -61,6 +61,6 @@ export const products: Product[] = [
     description: 'Old style flip smartphone',
     image: 'assets/images/motorolarazr.png',
     total: 100,
-    amount: 0
+    amount: 1
   }
 ]
