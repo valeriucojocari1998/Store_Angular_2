@@ -10,31 +10,33 @@
         <div class=" btn-secondary btn btn3">
           Cart
         </div>
-        <div *ngIf="items.length > 0 && visible" class="dropdown-content dropdown-menu-right dropdown-menu">
-          <div *ngFor="let item of items">
-            <div  class="menu-box">
-              <div [routerLink]="['/products', item.id]" style="cursor: pointer;">
-                <p>{{item.name}}</p>
-              </div>
-              <div style="position: absolute; right: 0; margin-right: 5%; display: inline-flex;">
-                <h6 style="font-size: 14px;">Price: {{item.price * item.amount | currency}}</h6>
-                <div style="margin-left: 10px;">
-                  <button class="btn-secondary btn-small" (click)="remove(item)">-</button>
-                  <button disabled class="btn-secondary btn-small">{{item.amount}}</button>
-                  <button class="btn-secondary btn-small" (click)="add(item)">+</button>
+        <div *ngIf="items">
+          <div *ngIf="items.length > 0 && visible" class="dropdown-content dropdown-menu-right dropdown-menu">
+            <div *ngFor="let item of items">
+              <div  class="menu-box">
+                <div [routerLink]="['/products', item.id]" style="cursor: pointer;">
+                  <p>{{item.name}}</p>
+                </div>
+                <div style="position: absolute; right: 0; margin-right: 5%; display: inline-flex;">
+                  <h6 style="font-size: 14px;">Price: {{item.price * item.amount | currency}}</h6>
+                  <div style="margin-left: 10px;">
+                    <button class="btn-secondary btn-small" (click)="remove(item)">-</button>
+                    <button disabled class="btn-secondary btn-small">{{item.amount}}</button>
+                    <button class="btn-secondary btn-small" (click)="add(item)">+</button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <hr>
-          <div style="margin: 5px; width: 100%; display: inline-flex;">
-            <div>
-              <p>
-                Total Price: {{totalPrice | currency}}
-              </p>
-            </div>
-            <div style="position: absolute; right: 0; margin-right: 20px;">
-              <button class="btn-secondary btn-sm btn" st routerLink="/cart">Check Cart</button>
+            <hr>
+            <div style="margin: 5px; width: 100%; display: inline-flex;">
+              <div>
+                <p>
+                  Total Price: {{totalPrice | currency}}
+                </p>
+              </div>
+              <div style="position: absolute; right: 0; margin-right: 20px;">
+                <button class="btn-secondary btn-sm btn" st routerLink="/cart">Check Cart</button>
+              </div>
             </div>
           </div>
         </div>

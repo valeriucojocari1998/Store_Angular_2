@@ -24,17 +24,22 @@ export class CartService {
   }
   addItem(val: Product){
     let state = true;
-    this.items.forEach(element => {
-      if (val.id === element.id){
-        element.amount++;
-        state = false;
-      }
-    });
+    if (this.items!=null){
+      this.items.forEach(element => {
+        if (val.id === element.id){
+          element.amount++;
+          state = false;
+        }
+      });
+    } else{
+      this.items = [val];
+      state = false;
+    }
     if (state){
-        this.items.push(val);
+      this.items.push(val);
     }
     this.localStorageService.set(LocalStorageService.key, this.items);
-   // console.log(this.localStorageService.get(LocalStorageService.key));
+    console.log(this.items)
   }
   removeItem(val: Product){
     this.items.forEach((element, index) => {
