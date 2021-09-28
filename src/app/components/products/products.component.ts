@@ -24,8 +24,6 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.navbarService.show();
     this.initialItems = this.productsService.getItems();
-    this.initialItems.push.apply(this.initialItems, this.initialItems);
-    this.initialItems.push.apply(this.initialItems, this.initialItems);
     this.items = this.initialItems
   }
   onScrollDown(){

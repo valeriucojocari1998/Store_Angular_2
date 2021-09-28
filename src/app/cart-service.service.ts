@@ -55,8 +55,11 @@ export class CartService {
   clearItem(val: Product){
     this.items.forEach((element, index) => {
       if (element.id === val.id){
+        console.log('found item')
         this.items.splice(index, 1)
+        console.log(this.items)
       }
     });
+    this.localStorageService.set(LocalStorageService.key, this.items);
   }
 }
