@@ -13,3 +13,12 @@ body, html{
   margin-right: 10%;
   text-align: center;
 }
+p{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+
+}
