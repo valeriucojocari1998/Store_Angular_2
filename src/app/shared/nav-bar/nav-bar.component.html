@@ -11,16 +11,18 @@
           Cart
         </div>
         <div *ngIf="items.length > 0" class="dropdown-content dropdown-menu-right dropdown-menu">
-          <div *ngFor="let item of items" class="menu-box">
-            <div [routerLink]="['/products', item.id]" style="cursor: pointer;">
-              <p>{{item.name}}</p>
-            </div>
-            <div style="position: absolute; right: 0; margin-right: 5%; display: inline-flex;">
-              <h6 style="font-size: 14px;">Price: {{item.price * item.amount | currency}}</h6>
-              <div style="margin-left: 10px;">
-                <button class="btn-secondary btn-small">+</button>
-                <button disabled class="btn-secondary btn-small">{{item.amount}}</button>
-                <button class="btn-secondary btn-small">-</button>
+          <div *ngFor="let item of items">
+            <div  class="menu-box">
+              <div [routerLink]="['/products', item.id]" style="cursor: pointer;">
+                <p>{{item.name}}</p>
+              </div>
+              <div style="position: absolute; right: 0; margin-right: 5%; display: inline-flex;">
+                <h6 style="font-size: 14px;">Price: {{item.price * item.amount | currency}}</h6>
+                <div style="margin-left: 10px;">
+                  <button class="btn-secondary btn-small" (click)="remove(item)">-</button>
+                  <button disabled class="btn-secondary btn-small">{{item.amount}}</button>
+                  <button class="btn-secondary btn-small" (click)="add(item)">+</button>
+                </div>
               </div>
             </div>
           </div>

@@ -1,1 +1,39 @@
-<p>cart works!</p>
+<app-nav-bar></app-nav-bar>
+
+<div class="visible-comp">
+  <h1>
+    Cart
+  </h1>
+  <div *ngIf="items.length != 0" style="text-align: start; margin-top: 2.5%; width: 100%;">
+    <div *ngFor="let item of items, let i=index" style="width: 100%;">
+      <div style="display: inline-flex; width: 100%; height: fit-content;">
+        <p>
+          {{item.name}}
+        </p>
+        <img src={{item.image}} width="70px" height="90px" style=" margin-left: 10%;">
+        <div style="position: absolute; right: 12%;">
+          <div style="display: inline-flex; margin-top: 10%;">
+            <h6>Price: {{item.price*item.amount | currency}}</h6>
+            <button class="btn btn-secondary btn-sm" (click)="removeItem(item)">Remove</button>
+            <button class="btn btn-secondary btn-sm" (click)="remove(item)">-</button>
+            <button class="btn btn-secondary btn-sm" disabled>{{item.amount}}</button>
+            <button class="btn btn-secondary btn-sm" (click)="add(item)">+</button>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div style="margin-top: 1%; display: inline-flex;">
+      <p style="margin-top: 15%;">
+        Total Price:
+      </p>
+      <p style="position: absolute; right: 10%; margin-bottom: 50%;">
+        {{totalPrice | currency}}
+      </p>
+    </div>
+    <div style="padding-bottom: 10%; width: 100%; margin-top: 1%">
+      <button class="btn btn-secondary" style="width: 49%; margin-left: 0;" (click)="clearCart()">Remove All</button>
+      <button class="btn btn-secondary" style="width: 49%; margin-right: 0;">Checkout</button>
+    </div>
+  </div>
+</div>

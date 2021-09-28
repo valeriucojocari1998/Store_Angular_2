@@ -1,0 +1,41 @@
+h1{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+  font-size: 50px;
+  font-weight: bold;
+  text-align: start;
+}
+p{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+  font-size: 25px;
+  margin-top: 2.5%;
+}
+button{
+  margin-right: 1%;
+  margin-left: 1%;
+}
+.btn-sm{
+  height: 50%;
+  text-overflow: clip;
+}
+h6{
+  text-transform: uppercase;
+	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+  font-size: 20px;
+  white-space: nowrap;
+  margin-top: 1%;
+  padding-right: 2%;
+}

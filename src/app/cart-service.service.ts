@@ -39,14 +39,24 @@ export class CartService {
   removeItem(val: Product){
     this.items.forEach((element, index) => {
       if (element.id === val.id){
-        if (element.amount === 1){
-          this.items.splice(index, 1)
-        }
         if (element.amount > 1){
           element.amount--;
+        } else{
+          this.items.splice(index, 1)
         }
       }
     });
     this.localStorageService.set(LocalStorageService.key, this.items);
+  }
+  clearItems(){
+    this.items = [];
+    this.localStorageService.set(LocalStorageService.key, this.items);
+  }
+  clearItem(val: Product){
+    this.items.forEach((element, index) => {
+      if (element.id === val.id){
+        this.items.splice(index, 1)
+      }
+    });
   }
 }
