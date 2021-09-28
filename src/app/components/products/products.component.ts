@@ -18,9 +18,11 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
+    private navbarService: NavbarService
   ) { }
 
   ngOnInit(): void {
+    this.navbarService.show();
     this.initialItems = this.productsService.getItems();
     this.initialItems.push.apply(this.initialItems, this.initialItems);
     this.initialItems.push.apply(this.initialItems, this.initialItems);

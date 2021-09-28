@@ -10,7 +10,7 @@
         <div class=" btn-secondary btn btn3">
           Cart
         </div>
-        <div *ngIf="items.length > 0" class="dropdown-content dropdown-menu-right dropdown-menu">
+        <div *ngIf="items.length > 0 && visible" class="dropdown-content dropdown-menu-right dropdown-menu">
           <div *ngFor="let item of items">
             <div  class="menu-box">
               <div [routerLink]="['/products', item.id]" style="cursor: pointer;">
