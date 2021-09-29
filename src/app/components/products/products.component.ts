@@ -23,12 +23,16 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.navbarService.show();
-    this.initialItems = this.productsService.getItems();
-    this.items = this.initialItems
+    this.getItems();
   }
+
   onScrollDown(){
     this.initialItems.forEach(element => {
       this.items.push(element);
     });
+  }
+
+  getItems(){
+    this.productsService.getProducts().subscribe(data => {this.initialItems = data; this.items = this.initialItems})
   }
 }

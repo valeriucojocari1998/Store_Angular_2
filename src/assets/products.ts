@@ -7,7 +7,7 @@ export interface Product{
   total: number;
   amount: number;
 }
-
+/*
 export const products: Product[] = [
   {
     id: 1,
@@ -172,3 +172,4 @@ export const products: Product[] = [
     amount: 1
   }
 ]
+*/

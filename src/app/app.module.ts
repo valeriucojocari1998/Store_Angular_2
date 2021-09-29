@@ -10,6 +10,8 @@ import { HomeModule } from './modules/home.module';
 import { ProductsModule } from './modules/products.module';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http'
+import { HttpClientInMemoryWebApiModule, InMemoryDbService } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,10 @@ import { HttpClientModule } from '@angular/common/http'
     CartModule,
     ProductsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation:false }
+    )
   ],
   providers: [],
   bootstrap: [AppComponent]

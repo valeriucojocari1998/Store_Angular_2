@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CartService } from 'src/app/cart-service.service';
 import { NavbarService } from 'src/app/navbar.service';
-import { Product, products } from 'src/assets/products';
+import { ProductsService } from 'src/app/products.service';
+import { Product } from 'src/assets/products';
 
 @Component({
   selector: 'app-product-details',
@@ -15,20 +16,26 @@ export class ProductDetailsComponent implements OnInit {
   constructor(
     private cartService: CartService,
     private route: ActivatedRoute,
-    private navbarService: NavbarService
+    private navbarService: NavbarService,
+    private productService: ProductsService
   ) { }
+  items : Product[] = [];
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.navbarService.show()
     const routeParams = this.route.snapshot.paramMap;
     const productIdFromRoute = Number(routeParams.get('productId'));
-    //find our product
-    this.product = products.find(product => product.id === productIdFromRoute)
+    this.getItem(productIdFromRoute);
   }
   addToCart(product: Product){
     if ( product.total > 0 ) {
       this.cartService.addItem(product);
     }
+  }
+  getItem(id: number){
+    this.productService.getProduct(id).subscribe(data => {
+      this.product = data
+    })
   }
 
 }

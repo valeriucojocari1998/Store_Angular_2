@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/assets/products';
-import { CartitemsService } from './cartitems.service';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({

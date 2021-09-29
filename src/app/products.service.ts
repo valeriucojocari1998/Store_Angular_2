@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { products, Product } from 'src/assets/products';
-import { CartitemsService } from './cartitems.service';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Product } from 'src/assets/products';
 
 @Injectable({
   providedIn: 'root'
@@ -8,21 +9,18 @@ import { CartitemsService } from './cartitems.service';
 
 export class ProductsService {
 
-  items: Product[] = [];
   constructor(
-    private cartitemsService: CartitemsService
-  ) { }
+    private http: HttpClient
+  ) {   }
 
-  /*getItems(){
-    return this.items;
-  }*/
-  getItems(){
-    this.items = [];
-    this.cartitemsService.getProducts().subscribe(data =>{
-      Object.values(data).forEach((element) => {
-        this.items.push({id: parseInt(element["id"], 10), name: element["name"], description: element["description"], price: parseInt(element["price"], 10), image: element["image"], total: parseInt(element["total"], 10), amount: parseInt(element["amount"], 10)})
-      });
-    })
-    return this.items
+  private productsUrl = 'api/products';
+
+  getProducts() :Observable<Product[]>{
+    return this.http.get<Product[]>(this.productsUrl);
   }
+  getProduct(id: number): Observable<Product>{
+    const url = `${this.productsUrl}/${id}`;
+    return this.http.get<Product>(url);
+  }
+
 }
