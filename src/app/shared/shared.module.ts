@@ -6,6 +6,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { GenericFormComponent } from './generic-from/generic-from.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavBarComponent,
     ProductComponent,
     ProductDetailsComponent,
-    GenericFormComponent
+    GenericFormComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   exports: [
     NavBarComponent,
     ProductComponent,
-    GenericFormComponent
+    GenericFormComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }
