@@ -17,19 +17,21 @@ export class NavBarComponent implements OnInit {
   totalPrice: number = 0;
   items: Product[] = [];
   visible!: boolean;
-  items2: any;
   ngOnInit() {
-    this.items=this.cartService.getItems();
+    this.items = this.cartService.getItems();
     this.visible = this.navbarService.visible;
+    this.totalPrice = this.cartService.getPrice();
   }
 
   add(val: Product){
     this.cartService.addItem(val)
     this.items=this.cartService.getItems();
+    this.totalPrice = this.cartService.getPrice();
   }
   remove(val: Product){
     this.cartService.removeItem(val)
     this.items=this.cartService.getItems();
+    this.totalPrice = this.cartService.getPrice();
   }
   hide(){
     this.navbarService.hide()

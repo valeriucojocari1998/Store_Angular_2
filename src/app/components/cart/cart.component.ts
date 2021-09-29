@@ -20,10 +20,12 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.items = this.cartService.getItems();
     this.navbarService.hide();
+    this.totalPrice = this.cartService.getPrice()
   }
   add(val: Product){
     this.cartService.addItem(val)
     this.items=this.cartService.getItems();
+    this.totalPrice = this.cartService.getPrice()
   }
   remove(val: Product){
     this.cartService.removeItem(val)
@@ -32,11 +34,12 @@ export class CartComponent implements OnInit {
   removeItem(val: Product){
     this.cartService.clearItem(val)
     this.items=this.cartService.getItems();
-
+    this.totalPrice = this.cartService.getPrice()
   }
   clearCart(){
     this.cartService.clearItems();
     this.items=this.cartService.getItems();
+    this.totalPrice = this.cartService.getPrice()
   }
 
 }

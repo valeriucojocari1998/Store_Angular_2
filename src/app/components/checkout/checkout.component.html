@@ -30,6 +30,23 @@
               <p>{{item.amount* item.price | currency}}</p>
             </th>
           </tr>
+          <tr>
+            <th>
+              <p>
+                Total:
+              </p>
+            </th>
+            <th>
+              <p>
+                {{totalAmount}}
+              </p>
+            </th>
+            <th>
+              <p>
+                {{totalPrice |currency}}
+              </p>
+            </th>
+          </tr>
         </tbody>
       </table>
     </div>

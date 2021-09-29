@@ -10,7 +10,6 @@ export class CartService {
 
 
   items: Product[] = [];
-  items2: Product[] = [];
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -67,5 +66,12 @@ export class CartService {
       }
     });
     this.localStorageService.set(LocalStorageService.key, this.items);
+  }
+  getPrice(){
+    return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+  }
+  getAmount(){
+    return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
+
   }
 }
