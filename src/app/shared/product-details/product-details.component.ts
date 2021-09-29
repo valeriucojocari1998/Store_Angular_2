@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
   getItem(id: number){
-    this.productService.getProduct(id).subscribe(data => {
+    this.productService.getProductById(id).subscribe(data => {
       this.product = data
     })
   }
