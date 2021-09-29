@@ -12,14 +12,16 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
 
-  items?: Observable<Product[]>;
+  items: Observable<Product[]> | undefined;
   private searchNames = new Subject<string>();
+  state: boolean = false;
   constructor(
     private productService: ProductsService,
     private router: Router
   ) { }
   search(name: string){
     this.searchNames.next(name)
+    if (name) {this.state = true} else {this.state = false}
   }
   ngOnInit(): void {
     this.items = this.searchNames.pipe(

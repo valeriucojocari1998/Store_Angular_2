@@ -2,6 +2,7 @@
   display: none;
   background-color: #f1f1f1;
   min-width: 183px;
+  min-height: 0;
   box-shadow: 0px 2px 4px 0px rgba(32, 24, 24, 0.2);
   z-index: 1;
 }
@@ -15,5 +16,5 @@
 .dropdown:hover .dropdown-content {display: block;}
 .menu-box{
   display: inline-flex;
-  width: 300px;
+  width: 200px;
 }

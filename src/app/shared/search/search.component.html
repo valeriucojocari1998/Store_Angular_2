@@ -1,14 +1,15 @@
 
 <div class="dropdown btn" id="search-component" style="width: 100%;">
-  <input type="search" placeholder="search product ..." #searchBox (input)="search(searchBox.value)">
-  <div *ngIf="items">
-    <div *ngIf="(items| async)?.length != 0" class="dropdown-content dropdown-menu-right dropdown-menu">
-      <ul style="list-style-type: none; text-align: start;">
+  <div style="display: block; width: 100%;">
+    <input type="search" placeholder="search product ..." #searchBox (input)="search(searchBox.value)" class="form-control">
+  </div>
+  <div *ngIf="state">
+    <div *ngIf="(items| async)?.length != 0" class="dropdown-content dropdown-menu-right dropdown-menu table-striped" style="padding: 0; margin: 0;">
+      <ul style="list-style-type: none; text-align: start; max-height: 400px; margin: 0; padding: 0;">
         <li *ngFor="let item of items| async">
-          <a routerLink="/products/{{item.id}}" (click)="reload(item)" style="white-space: nowrap; text-align: start;">
-            {{item.name}}
+          <a class="dropdown-item" (click)="reload(item)" style="white-space: nowrap; text-align: start; margin: 0; padding-left: 5px; padding-right: 5px;">
+           <p style="margin: 0; padding: 0; margin-top: 1%; margin-bottom: 1%;">{{item.name}}</p>
           </a>
-          <hr>
         </li>
       </ul>
     </div>
