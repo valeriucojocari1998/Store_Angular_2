@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/assets/products';
+import { CartitemsService } from './cartitems.service';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -10,10 +11,12 @@ export class CartService {
 
 
   items: Product[] = [];
+  items2: Product[] = [];
 
   constructor(
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
   ) { }
+
 
   getItems(){
     this.items = this.localStorageService.get(LocalStorageService.key)
@@ -39,7 +42,6 @@ export class CartService {
       this.items.push(val);
     }
     this.localStorageService.set(LocalStorageService.key, this.items);
-    console.log(this.items)
   }
   removeItem(val: Product){
     this.items.forEach((element, index) => {

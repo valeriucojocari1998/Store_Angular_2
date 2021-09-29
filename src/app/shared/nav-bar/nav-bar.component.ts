@@ -17,7 +17,8 @@ export class NavBarComponent implements OnInit {
   totalPrice: number = 0;
   items: Product[] = [];
   visible!: boolean;
-  ngOnInit(): void {
+  items2: any;
+  ngOnInit() {
     this.items=this.cartService.getItems();
     this.visible = this.navbarService.visible;
   }
