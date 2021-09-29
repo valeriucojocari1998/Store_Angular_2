@@ -1,14 +1,14 @@
 
 <div class="dropdown btn" id="search-component" style="width: 100%;">
-  <label for="search-box">Product Search</label>
   <input type="search" placeholder="search product ..." #searchBox (input)="search(searchBox.value)">
   <div *ngIf="items">
     <div *ngIf="(items| async)?.length != 0" class="dropdown-content dropdown-menu-right dropdown-menu">
-      <ul style="list-style-type: none;">
+      <ul style="list-style-type: none; text-align: start;">
         <li *ngFor="let item of items| async">
-          <a routerLink="/products/{{item.id}}" (click)="reload(item)">
+          <a routerLink="/products/{{item.id}}" (click)="reload(item)" style="white-space: nowrap; text-align: start;">
             {{item.name}}
           </a>
+          <hr>
         </li>
       </ul>
     </div>
