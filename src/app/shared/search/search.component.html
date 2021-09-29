@@ -6,7 +6,7 @@
     <div *ngIf="(items| async)?.length != 0" class="dropdown-content dropdown-menu-right dropdown-menu">
       <ul style="list-style-type: none;">
         <li *ngFor="let item of items| async">
-          <a routerLink="/products/{{item.id}}" (click)="reload()">
+          <a routerLink="/products/{{item.id}}" (click)="reload(item)">
             {{item.name}}
           </a>
         </li>

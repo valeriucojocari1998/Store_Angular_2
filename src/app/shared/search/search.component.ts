@@ -3,6 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { ProductsService } from 'src/app/service/products-service/products.service';
 import { Product } from 'src/assets/products';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,10 +12,11 @@ import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators'
 })
 export class SearchComponent implements OnInit {
 
-  items!: Observable<Product[]>
+  items?: Observable<Product[]>;
   private searchNames = new Subject<string>();
   constructor(
-    private productService: ProductsService
+    private productService: ProductsService,
+    private router: Router
   ) { }
   search(name: string){
     this.searchNames.next(name)
@@ -26,7 +28,9 @@ export class SearchComponent implements OnInit {
       switchMap((name: string) => this.productService.getProductByName(name)),
     )
   }
-  reload(){
+  reload(val: Product){
+    const string = '/products/' + val.id.toString()
+    window.location.replace(string)
   }
 }
 
