@@ -5,6 +5,13 @@
   font-weight: bold;
   cursor: pointer;
 }
+p:hover{
+  background: linear-gradient(to right, #683aa1 0%, rgb(64, 167, 127) 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+  font-family: 'Poppins', sans-serif;
+  background-clip: text;
+}
 p{
   text-transform: uppercase;
 	background: linear-gradient(to right, #9a56ee 0%, rgb(76, 199, 152) 100%);
