@@ -1,7 +1,10 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="visible-comp">
-  <div class="welcome"  routerLink="/products">
+  <div class="welcome" *ngIf="!state"  routerLink="/products" style="position: absolute;" [style.top]="top" [style.right]="right" (mouseover)="position()">
     <p>Enter Shop</p>
+  </div>
+  <div *ngIf="state" class="welcome"  (click)="reload()" style="position: absolute;" [style.top]="'30%'" [style.right]="'20%'">
+    <p>You are not Worthy</p>
   </div>
 </div>
