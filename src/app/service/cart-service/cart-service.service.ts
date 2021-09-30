@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Product } from 'src/assets/products';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';
 
+export interface Total{
+  price: number,
+  items: number
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -10,6 +14,7 @@ export class CartService {
 
 
   items: Product[] = [];
+  total: Total = {price: 0, items:0}
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -32,7 +37,9 @@ export class CartService {
     if (this.items!=null){
       this.items.forEach(element => {
         if (val.id === element.id){
-          element.amount++;
+          if(element.amount< element.total){
+            element.amount++;
+          }
           state = false;
         }
       });
@@ -73,16 +80,11 @@ export class CartService {
     });
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
-  getPrice(){
+  getTotal(){
     if (this.items){
-      return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+      this.total.price = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+      this.total.items = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
     }
-    return 0;
-  }
-  getAmount(){
-    if (this.items){
-      return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
-    }
-    return 0;
+    return this.total;
   }
 }

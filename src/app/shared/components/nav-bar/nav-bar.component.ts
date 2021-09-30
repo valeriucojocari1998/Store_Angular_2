@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/service/cart-service/cart-service.service';
+import { CartService, Total } from 'src/app/service/cart-service/cart-service.service';
 import { NavbarService } from 'src/app/service/nav-bar-service/navbar.service';
 import { Product } from 'src/assets/products';
 
@@ -14,14 +14,13 @@ export class NavBarComponent implements OnInit {
     private cartService: CartService,
     private navbarService: NavbarService
   ) { }
-  totalPrice: number = 0;
+
   items: Product[] = [];
-  totalItems: number = 0;
+  total!: Total;
   visible!: boolean;
   update(){
     this.items = this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice();
-    this.totalItems = this.cartService.getAmount();
+    this.total = this.cartService.getTotal();
   }
   ngOnInit() {
     this.update()

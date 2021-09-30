@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CartService } from 'src/app/service/cart-service/cart-service.service';
+import { CartService, Total } from 'src/app/service/cart-service/cart-service.service';
 import { NavbarService } from 'src/app/service/nav-bar-service/navbar.service';
 import { Product } from 'src/assets/products';
 
@@ -16,31 +16,31 @@ export class CartComponent implements OnInit, OnDestroy {
   ) { }
 
   items: Product[] = []
-  totalPrice: number = 0;
+  total!: Total;
   ngOnInit(): void {
     this.items = this.cartService.getItems();
     this.navbarService.hide();
-    this.totalPrice = this.cartService.getPrice()
+    this.total = this.cartService.getTotal()
   }
   add(val: Product){
     this.cartService.addItem(val)
     this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice()
+    this.total = this.cartService.getTotal()
   }
   remove(val: Product){
     this.cartService.removeItem(val)
     this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice()
+    this.total = this.cartService.getTotal()
   }
   removeItem(val: Product){
     this.cartService.clearItem(val)
     this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice()
+    this.total = this.cartService.getTotal()
   }
   clearCart(){
     this.cartService.clearItems();
     this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice()
+    this.total = this.cartService.getTotal()
   }
   ngOnDestroy(){
     this.navbarService.show()

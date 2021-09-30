@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/service/cart-service/cart-service.service';
+import { CartService, Total } from 'src/app/service/cart-service/cart-service.service';
 import { Product } from 'src/assets/products';
 
 @Component({
@@ -10,16 +10,14 @@ import { Product } from 'src/assets/products';
 export class CheckoutComponent implements OnInit {
 
   items: Product[] = [];
-  totalPrice: number = 0;
-  totalAmount: number = 0;
+  total!: Total;
   constructor(
     private cartService: CartService
   ) { }
 
   ngOnInit(): void {
     this.items = this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice();
-    this.totalAmount = this.cartService.getAmount();
+    this.total = this.cartService.getTotal();
   }
 
 }
