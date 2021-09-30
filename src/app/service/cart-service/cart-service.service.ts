@@ -17,8 +17,10 @@ export class CartService {
 
 
   getItems(){
-    this.items = this.localStorageService.get(LocalStorageService.key)
-    return this.items;
+    let local = this.localStorageService.get(LocalStorageService.key)
+    if (local) {this.items = local; return this.items;}
+    console.log(this.items);
+    return this.items
   }
   setItems(val: Product[]){
     this.items = val;
@@ -32,8 +34,10 @@ export class CartService {
           state = false;
         }
       });
-    } else{
-      this.items = [val];
+    }else{
+      console.log(this.items)
+      this.items = [val]
+      console.log(this.items)
       state = false;
     }
     if (state){
@@ -68,10 +72,15 @@ export class CartService {
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
   getPrice(){
-    return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+    if (this.items){
+      return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+    }
+    return 0;
   }
   getAmount(){
-    return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
-
+    if (this.items){
+      return this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
+    }
+    return 0;
   }
 }

@@ -17,12 +17,10 @@ export class ProductsComponent implements OnInit {
   initialItems: Product[] = []
 
   constructor(
-    private productsService: ProductsService,
-    private navbarService: NavbarService
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
-    this.navbarService.show();
     this.getItems();
   }
 

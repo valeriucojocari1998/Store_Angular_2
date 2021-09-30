@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CartService } from 'src/app/service/cart-service/cart-service.service';
 import { NavbarService } from 'src/app/service/nav-bar-service/navbar.service';
 import { Product } from 'src/assets/products';
@@ -8,7 +8,7 @@ import { Product } from 'src/assets/products';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
 
   constructor(
     private cartService: CartService,
@@ -30,6 +30,7 @@ export class CartComponent implements OnInit {
   remove(val: Product){
     this.cartService.removeItem(val)
     this.items=this.cartService.getItems();
+    this.totalPrice = this.cartService.getPrice()
   }
   removeItem(val: Product){
     this.cartService.clearItem(val)
@@ -40,6 +41,9 @@ export class CartComponent implements OnInit {
     this.cartService.clearItems();
     this.items=this.cartService.getItems();
     this.totalPrice = this.cartService.getPrice()
+  }
+  ngOnDestroy(){
+    this.navbarService.show()
   }
 
 }
