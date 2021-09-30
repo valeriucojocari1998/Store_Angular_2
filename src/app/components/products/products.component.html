@@ -1,13 +1,18 @@
 <app-nav-bar></app-nav-bar>
 
 <div class="visible-comp">
+
   <div class="search-results"
   infinite-scroll
   [infiniteScrollDistance]="scrollDistance"
   [infiniteScrollUpDistance]="scrollUpDistance"
   [infiniteScrollThrottle]="throttle"
   (scrolled)="onScrollDown()">
-    <p style="text-align: center;">Market Place</p>
+    <div style="display: inline-flex; width: 90%;">
+      <app-filter style="text-align: start; margin-right: 1%;" [priceText]="'Under '" (priceEvent)="filterItemsByUnderPrice($event)"></app-filter>
+      <app-filter style="text-align: start;" [priceText]="'Over '" (priceEvent)="filterItemsByOverPrice($event)"></app-filter>
+      <p style="text-align: center; width: 100%;">Market Place</p>
+    </div>
     <div class="d-flex flex-wrap justify-content-center">
       <div class="p-3" *ngFor="let item of items">
         <app-product [product]="item"></app-product>

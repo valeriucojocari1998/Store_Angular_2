@@ -24,7 +24,9 @@ export class CartService {
   }
   setItems(val: Product[]){
     this.items = val;
+    this.localStorageService.set(LocalStorageService.key, this.items);
   }
+
   addItem(val: Product){
     let state = true;
     if (this.items!=null){

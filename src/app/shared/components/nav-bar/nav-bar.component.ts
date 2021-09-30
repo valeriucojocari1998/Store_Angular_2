@@ -16,22 +16,25 @@ export class NavBarComponent implements OnInit {
   ) { }
   totalPrice: number = 0;
   items: Product[] = [];
+  totalItems: number = 0;
   visible!: boolean;
-  ngOnInit() {
+  update(){
     this.items = this.cartService.getItems();
-    this.visible = this.navbarService.visible;
     this.totalPrice = this.cartService.getPrice();
+    this.totalItems = this.cartService.getAmount();
+  }
+  ngOnInit() {
+    this.update()
+    this.visible = this.navbarService.visible;
   }
 
   add(val: Product){
     this.cartService.addItem(val)
-    this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice();
+    this.update()
   }
   remove(val: Product){
     this.cartService.removeItem(val)
-    this.items=this.cartService.getItems();
-    this.totalPrice = this.cartService.getPrice();
+    this.update()
   }
   hide(){
     this.navbarService.hide()

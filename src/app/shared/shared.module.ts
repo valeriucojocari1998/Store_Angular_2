@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { AppRoutingModule } from '../app-routing.module';
-import { ProductComponent } from './product/product.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { GenericFormComponent } from './generic-from/generic-from.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { GenericFormComponent } from './components/generic-from/generic-from.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { LoadingComponent } from './loading/loading.component';
-import { SearchComponent } from './search/search.component';
+import { LoadingComponent } from './components/loading/loading.component';
+import { SearchComponent } from './components/search/search.component';
+import { FilterComponent } from './components/filter/filter.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SearchComponent } from './search/search.component';
     ProductDetailsComponent,
     GenericFormComponent,
     LoadingComponent,
-    SearchComponent
+    SearchComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +31,8 @@ import { SearchComponent } from './search/search.component';
     ProductComponent,
     GenericFormComponent,
     LoadingComponent,
-    SearchComponent
+    SearchComponent,
+    FilterComponent
   ]
 })
 export class SharedModule { }

@@ -9,8 +9,20 @@
     <div class="button-group">
       <app-search></app-search>
       <div class="dropdown cart-button btn2" style="margin-right: 9%;">
-        <div class=" btn-secondary btn btn3">
-          Cart
+        <div class=" btn-secondary btn btn3" style="text-align: center; width: 100%;">
+          <div *ngIf="totalItems > 0" style="margin-left: 20%;  display: inline-flex; width: 100%; white-space: nowrap;">
+            <div>
+              Cart has
+            </div>
+            <div style="position: absolute; right: 20%;">
+              {{totalItems}}
+            </div>
+          </div>
+          <div *ngIf="totalItems <= 0" style="white-space: nowrap;">
+            <div>
+              Cart is empty
+            </div>
+          </div>
         </div>
         <div *ngIf="items">
           <div *ngIf="items.length > 0 && visible" class="dropdown-content dropdown-menu-right dropdown-menu">

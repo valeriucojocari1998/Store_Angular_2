@@ -1,0 +1,8 @@
+<div class="dropdown" style="z-index: 1;">
+  <button class="btn btn-secondary" style="white-space: nowrap;">
+    Price {{priceText}}
+  </button>
+  <section class="dropdown-content" style="position: absolute;">
+    <option *ngFor="let option of priceOptions" value="{{option}}" (click)="select($event)">{{priceText}} {{option | currency}}</option>
+  </section>
+</div>
