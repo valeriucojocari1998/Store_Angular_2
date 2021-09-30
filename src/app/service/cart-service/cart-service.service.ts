@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Product } from 'src/assets/products';
 import { LocalStorageService } from '../local-storage-service/local-storage.service';
 
@@ -14,7 +15,7 @@ export class CartService {
 
 
   items: Product[] = [];
-  total: Total = {price: 0, items:0}
+  total: BehaviorSubject<Total> = new BehaviorSubject({price: 0, items: 0});
 
   constructor(
     private localStorageService: LocalStorageService,
@@ -52,6 +53,7 @@ export class CartService {
     if (state){
       this.items.push(val);
     }
+    this.setTotal()
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
   removeItem(val: Product){
@@ -64,10 +66,12 @@ export class CartService {
         }
       }
     });
+    this.setTotal()
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
   clearItems(){
     this.items = [];
+    this.setTotal()
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
   clearItem(val: Product){
@@ -78,13 +82,15 @@ export class CartService {
         console.log(this.items)
       }
     });
+    this.setTotal()
     this.localStorageService.set(LocalStorageService.key, this.items);
   }
+  setTotal(){
+    this.total.value.price = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
+    this.total.value.items = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
+  }
   getTotal(){
-    if (this.items){
-      this.total.price = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount*obj.price}, 0)
-      this.total.items = this.items.reduce(function (acc, obj: Product) {return acc + obj.amount}, 0)
-    }
+    this.setTotal()
     return this.total;
   }
 }

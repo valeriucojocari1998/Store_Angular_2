@@ -18,32 +18,30 @@ export class CartComponent implements OnInit, OnDestroy {
   items: Product[] = []
   total!: Total;
   ngOnInit(): void {
-    this.items = this.cartService.getItems();
     this.navbarService.hide();
-    this.total = this.cartService.getTotal()
+    this.update();
   }
   add(val: Product){
     this.cartService.addItem(val)
-    this.items=this.cartService.getItems();
-    this.total = this.cartService.getTotal()
+    this.update();
   }
   remove(val: Product){
     this.cartService.removeItem(val)
-    this.items=this.cartService.getItems();
-    this.total = this.cartService.getTotal()
+    this.update();
   }
   removeItem(val: Product){
     this.cartService.clearItem(val)
-    this.items=this.cartService.getItems();
-    this.total = this.cartService.getTotal()
+    this.update();
   }
   clearCart(){
     this.cartService.clearItems();
-    this.items=this.cartService.getItems();
-    this.total = this.cartService.getTotal()
+    this.update();
   }
   ngOnDestroy(){
     this.navbarService.show()
   }
-
+  update(){
+    this.items=this.cartService.getItems();
+    this.cartService.getTotal().subscribe(data => {this.total = data})
+  }
 }
