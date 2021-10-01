@@ -77,4 +77,7 @@ p{
   align-items: center;
   font-size: 10px;
 }
+.hover:hover{
+  opacity: 0.5;
+}
 

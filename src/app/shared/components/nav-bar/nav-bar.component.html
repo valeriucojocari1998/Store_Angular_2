@@ -1,15 +1,15 @@
 <div class="nav-bar">
   <div class="button-list">
     <div class="button-group" style="margin-left: 9%;">
-      <button class="btn btn2 btn-secondary" routerLink="/home">Home</button>
-      <button class="btn btn2 btn-secondary" routerLink="/products">Shop</button>
-      <button class="btn btn2 btn-secondary" routerLink="/about">About</button>
+      <button class="btn btn2 btn-secondary hover" routerLink="/home">Home</button>
+      <button class="btn btn2 btn-secondary hover" routerLink="/products">Shop</button>
+      <button class="btn btn2 btn-secondary hover" routerLink="/about">About</button>
 
     </div>
     <div class="button-group">
       <app-search></app-search>
       <div class="dropdown cart-button btn2" style="margin-right: 9%;">
-        <div class=" btn-secondary btn btn3" style="text-align: center; width: 100%;">
+        <div class=" btn-secondary btn btn3 hover" style="text-align: center; width: 100%;">
           <div *ngIf="total.items > 0" style="padding-left: 20%;  display: inline-flex; width: 100%; white-space: nowrap;">
             <div>
               Cart has
