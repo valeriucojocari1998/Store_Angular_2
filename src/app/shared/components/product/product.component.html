@@ -1,18 +1,23 @@
 <div class="card" >
-  <div [routerLink]="['/products', product.id]" style="cursor: pointer;">
+  <div [routerLink]="['/products', product.value.id]" style="cursor: pointer;">
     <div style="width: 100%; text-align: start;">
-      {{ product.name }}
+      {{ product.value.name }}
     </div>
-    <div *ngIf="product.image">
-      <img src={{product.image}} width="auto" height="140px">
+    <div *ngIf="product.value.image">
+      <img src={{product.value.image}} width="auto" height="140px">
+    </div>
+  </div>
+  <div>
+    <div *ngIf="workingitems.length > 1" style="display: inline-flex;">
+      <input type="radio" name="color" *ngFor="let color of workingitems" style="margin: 2%; background: blueviolet;" value="color.color"  [style.border-color]="color.color" (click)="changeDisplay(color)">
     </div>
   </div>
   <div style="position: absolute; bottom: 10px; display: inline-flex; width: 100%;">
     <div style="width: 50%;">
-      Price: {{ product.price | currency}}
+      Price: {{ product.value.price | currency}}
     </div>
     <div style="width: 50%;">
-      <button class="btn btn-secondary btn-sm" (click)="addToCart(product)">Buy</button>
+      <button class="btn btn-secondary btn-sm" (click)="addToCart(product.value)">Buy</button>
     </div>
   </div>
 </div>

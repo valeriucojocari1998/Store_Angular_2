@@ -33,7 +33,14 @@ export class ProductsComponent implements OnInit {
   }
 
   getItems(){
-    this.productsService.getProducts().subscribe(data => {this.initialItems = data; this.items = this.initialItems; this.nonChangingItems = this.initialItems})
+    this.productsService.getProducts().subscribe(data => {
+      this.initialItems = data;
+      this.items = this.initialItems;
+      this.nonChangingItems = this.initialItems
+      this.initialItems.forEach((element, index) => {
+        if (element.id > 10000) { this.initialItems.splice(index, 1); this.items.splice(index, 1); this.nonChangingItems.splice(index, 1)}
+      });
+    })
   }
 
   filterItemsByUnderPrice(underPrice: number){
@@ -42,7 +49,6 @@ export class ProductsComponent implements OnInit {
     this.nonChangingItems.forEach(element => {
       if (element.price < underPrice) {this.initialItems.push(element); this.items.push(element)}
     });
-    console.log(this.initialItems)
   }
   filterItemsByOverPrice(overPrice: number){
     this.initialItems = [];
@@ -50,6 +56,5 @@ export class ProductsComponent implements OnInit {
     this.nonChangingItems.forEach(element => {
       if (element.price > overPrice) {this.initialItems.push(element); this.items.push(element)}
     });
-    console.log(this.initialItems)
   }
 }
