@@ -24,18 +24,18 @@ export class GenericFormComponent implements OnInit {
 
   buildForm() {
     this.checkout = this.formBuilder.group({
-      Name: [''],
-      Surname: [''],
-      Email: [''],
-      Address: [''],
-      Gender: [Gender.Default],
-      Programmer: [false],
+      Name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
+      Surname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      Email: ['', [Validators.required, Validators.email]],
+      Address: ['', [Validators.required, Validators.minLength(1)]],
+      Gender: [Gender.Default, [Validators.required]],
+      Programmer: [false, [Validators.requiredTrue]],
       IsHuman: [true],
-      MaxMoney: [0],
+      MaxMoney: [0, [Validators.required, Validators.min(1)]],
     });
   }
 
   submit() {
-    console.log(this.checkout.value);
+    console.log(this.checkout)
   }
 }
