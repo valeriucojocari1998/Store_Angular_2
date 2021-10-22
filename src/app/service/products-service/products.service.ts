@@ -14,10 +14,7 @@ export class ProductsService {
   ) {   }
 
   private productsUrl = 'api/products';
-  items: Product[] = []
-  getItems(){
-    this
-  }
+
   getProducts() :Observable<Product[]>{
     return this.http.get<Product[]>(this.productsUrl);
   }

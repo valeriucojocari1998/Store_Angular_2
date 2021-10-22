@@ -9,6 +9,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component';
 import { SearchComponent } from './components/search/search.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { NotificationComponent } from '../notification/notification.component';
+import { AlertModule } from 'ngx-bootstrap/alert'
 
 
 @NgModule({
@@ -19,12 +21,14 @@ import { FilterComponent } from './components/filter/filter.component';
     GenericFormComponent,
     LoadingComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    NotificationComponent
   ],
   imports: [
     CommonModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AlertModule
   ],
   exports: [
     NavBarComponent,
@@ -32,7 +36,8 @@ import { FilterComponent } from './components/filter/filter.component';
     GenericFormComponent,
     LoadingComponent,
     SearchComponent,
-    FilterComponent
+    FilterComponent,
+    NotificationComponent
   ]
 })
 export class SharedModule { }

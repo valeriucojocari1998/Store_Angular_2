@@ -30,7 +30,8 @@ export class NavBarComponent implements OnInit {
   visible!: boolean;
   update(){
     this.items = this.cartService.getItems();
-    this.cartService.getTotal().subscribe(data => {this.total = data});
+    this.total = this.cartService.getTotal().getValue();
+    //this.cartService.getTotal().subscribe(data => {this.total = data});
   }
   ngOnInit() {
     this.update()
