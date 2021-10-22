@@ -1,27 +1,41 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { Gender } from './gender.enum';
 
 @Component({
   selector: 'app-generic-from',
   templateUrl: './generic-from.component.html',
-  styleUrls: ['./generic-from.component.css']
+  styleUrls: ['./generic-from.component.css'],
 })
 export class GenericFormComponent implements OnInit {
+  checkout!: FormGroup;
+  public genderTypes = Object.values(Gender);
 
-  checkout = new FormGroup ({
-    emailForm: new FormControl('', Validators.required),
-    nameForm: new FormControl('', Validators.required),
-    addressForm: new FormControl('', Validators.required),
-    cityForm: new FormControl('', Validators.required)
-  }, Validators.required)
-
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
+    this.buildForm()
   }
 
-  onSubmit(){
-    let x = 'The product has been shipped to ' + this.checkout.value.addressForm + ', ' + this.checkout.value.cityForm;
-    window.alert(x);
+  buildForm() {
+    this.checkout = this.formBuilder.group({
+      Name: [''],
+      Surname: [''],
+      Email: [''],
+      Address: [''],
+      Gender: [Gender.Default],
+      Programmer: [false],
+      IsHuman: [true],
+      MaxMoney: [0],
+    });
+  }
+
+  submit() {
+    console.log(this.checkout.value);
   }
 }
