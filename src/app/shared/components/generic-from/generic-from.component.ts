@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { Gender } from './gender.enum';
+import { buildForm } from './buildForm';
 
 @Component({
   selector: 'app-generic-from',
@@ -13,29 +8,16 @@ import { Gender } from './gender.enum';
   styleUrls: ['./generic-from.component.css'],
 })
 export class GenericFormComponent implements OnInit {
-  checkout!: FormGroup;
   public genderTypes = Object.values(Gender);
+  checkout: any;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor() {}
 
   ngOnInit(): void {
-    this.buildForm()
-  }
-
-  buildForm() {
-    this.checkout = this.formBuilder.group({
-      Name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]),
-      Surname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
-      Email: ['', [Validators.required, Validators.email]],
-      Address: ['', [Validators.required, Validators.minLength(1)]],
-      Gender: [Gender.Default, [Validators.required]],
-      Programmer: [false, [Validators.requiredTrue]],
-      IsHuman: [true],
-      MaxMoney: [0, [Validators.required, Validators.min(1)]],
-    });
+    this.checkout = buildForm();
   }
 
   submit() {
-    console.log(this.checkout)
+    console.log(this.checkout);
   }
 }
